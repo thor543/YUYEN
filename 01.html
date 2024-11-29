@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUUEN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #333;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            font-size: 1em;
+            margin-top: -10px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        button {
+            background-color: #ff6b81;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #ff4b61;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .content {
+            display: none;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        .content img {
+            width: 80%;
+            max-width: 500px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        /* 調整圖片的大小，並保持長寬比 */
+        .content img {
+            width: 70%; /* 設定圖片的寬度為70% */
+            max-width: 400px; /* 最大寬度設為400px */
+            height: auto; /* 高度自動調整以保持長寬比 */
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+        /* 背景動畫 */
+        @keyframes backgroundMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+        body {
+            background-size: 400% 400%;
+            animation: backgroundMove 15s infinite alternate;
+        }
+
+        /* 淡入動畫 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 煙火效果 */
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ff6b81;
+            opacity: 0;
+            animation: explode 1s ease-out forwards;
+        }
+
+        .spark {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: #ffdf00;
+            opacity: 0;
+            animation: sparkAnimation 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(2) translate(var(--x), var(--y));
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(4) translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkAnimation {
+            0% {
+                opacity: 1;
+                transform: scale(0) translate(0, 0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translate(var(--sx), var(--sy));
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>給我的寶貝 YUYEN</h1>
+    <h2>I love you for all that you are, all that you have been, and all you’re yet to be.</h2>
+    <h2>我愛妳的全部，包含當下、曾經以及未來的妳。</h2>
+    <button id="startButton">點擊開始</button>
+
+    <div class="content" id="step1">
+        <!-- 使用本地圖片 01.jpg -->
+        <img src="C:\Users\thor.wu\Desktop\love\01.jpg" alt="圖片1">
+        <p>我們因相遇、相識到相愛</p>
+        <p>生活因為有妳變得不一樣</p>
+        <button class="nextButton" data-next="step2">繼續下一段</button>
+    </div>
+
+    <div class="content" id="step2">
+        <!-- 使用本地圖片 02.jpg -->
+        <img src="C:\Users\thor.wu\Desktop\love\02.jpg" alt="圖片2">
+        <p>從那之後，每一天的日子都像有了色彩</p>
+        <p>寶貝的笑容就是我每天的動力</p>
+        <button class="nextButton" data-next="step3">繼續下一段</button>
+    </div>
+
+    <div class="content" id="step3">
+        <!-- 使用本地圖片 03.jpg -->
+        <img src="C:\Users\thor.wu\Desktop\love\03.jpg" alt="圖片3">
+        <p>最後我想對妳說，未來請多多指教</p>
+        <p>我會陪伴著妳，一起度過未來的每一天</p>
+        <p>❤️ 我愛你 ❤️</p>
+        <button id="showFireworksButton">讓我們一起慶祝！</button>
+    </div>
+
+    <!-- 煙火效果容器 -->
+    <div class="fireworks" id="fireworks"></div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const nextButtons = document.querySelectorAll('.nextButton');
+        const fireworksContainer = document.getElementById('fireworks');
+        const showFireworksButton = document.getElementById('showFireworksButton');
+
+        startButton.addEventListener('click', () => {
+            document.getElementById('step1').style.display = 'block';
+            startButton.style.display = 'none';
+        });
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const currentContent = button.parentElement;
+                const nextStep = document.getElementById(button.dataset.next);
+
+                currentContent.style.display = 'none';
+                if (nextStep) {
+                    nextStep.style.display = 'block';
+                }
+            });
+        });
+
+        // 顯示繽紛煙火效果
+        function showFireworks() {
+            fireworksContainer.style.display = 'block';
+
+            setInterval(() => {
+                // 隨機位置
+                const fireworkX = Math.random() * window.innerWidth;
+                const fireworkY = Math.random() * window.innerHeight;
+
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.left = `${fireworkX}px`;
+                firework.style.top = `${fireworkY}px`;
+                firework.style.setProperty('--x', `${(Math.random() - 0.5) * 500}px`);
+                firework.style.setProperty('--y', `${(Math.random() - 0.5) * 500}px`);
+
+                // 隨機顏色
+                const colors = ['#FF5733', '#FFB533', '#33FF57', '#3357FF', '#B533FF'];
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                fireworksContainer.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+
+                // 產生火花
+                for (let i = 0; i < 5; i++) {
+                    const spark = document.createElement('div');
+                    spark.classList.add('spark');
+
+                    // 隨機顏色
+                    spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    spark.style.setProperty('--sx', `${(Math.random() - 0.5) * 100}px`);
+                    spark.style.setProperty('--sy', `${(Math.random() - 0.5) * 100}px`);
+                    spark.style.left = `${fireworkX}px`;
+                    spark.style.top = `${fireworkY}px`;
+
+                    fireworksContainer.appendChild(spark);
+
+                    setTimeout(() => {
+                        spark.remove();
+                    }, 1000);
+                }
+            }, 500);
+        }
+
+        showFireworksButton.addEventListener('click', showFireworks);
+    </script>
+</body>
+</html>
